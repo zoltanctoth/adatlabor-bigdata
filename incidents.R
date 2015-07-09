@@ -1,6 +1,7 @@
+install.packages("ggplot2")
 library(ggplot2)
 
-birdstrikes = read.csv("~/kepzes/adatlabor-bigdata/birdstrikes/birdstrikes.csv",header=FALSE,col.names=c('id','aircraft','state','size','cost'))
+birdstrikes = read.csv("~/anyagok/birdstrikes/birdstrikes.csv",header=FALSE,col.names=c('id','aircraft','state','size','cost'))
 colnames(birdstrikes)
 
 ?aggregate
@@ -8,7 +9,7 @@ i.state = aggregate(list(incidents=birdstrikes$state), by=list(state=birdstrikes
 
 ?order
 order(i.state$incidents)
-i.ordered = i.state[order(i.state$incidents, decreasing=TRUE)]
+i.ordered = i.state[order(i.state$incidents, decreasing=TRUE),]
 i.ordered
 
 most.incidents = head(i.ordered,n=10)
